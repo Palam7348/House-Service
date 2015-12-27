@@ -1,0 +1,81 @@
+﻿@model IEnumerable<HouseServicesSigmaProject.Models.Porch>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <table class="MyTable" align="center" width="800">
+        <tr class="Tr">
+            <td class="Td" align="center">@Html.ActionLink("Районы", "Index", "SubRegions")</td>
+            <td class="Td" align="center">@Html.ActionLink("Улицы", "Index", "Streets")</td>
+            <td class="Td" align="center">@Html.ActionLink("Дома", "Index", "Houses")</td>
+            <td class="Td" align="center">@Html.ActionLink("Подъезды", "Index", "Porches")</td>
+            <td class="Td" align="center">@Html.ActionLink("Квартиры", "Index", "Apartments")</td>
+        </tr>
+    </table>
+</div>
+
+
+<div>
+    <table class="MyTable" align="center" width="800">
+        <tr class="Tr">
+            <td class="Td" align="center">@Html.ActionLink("Добавить подъезд", "Create", null, new { @class = "Adding" })</td>
+            <td class="Td" align="center">@Html.ActionLink("Уведомить несколько", "SendSeveral", null, new { @class = "Send" })</td>
+        </tr>
+    </table>
+</div>
+
+
+
+<hr />
+
+
+<table class="MyTable" cellpadding="10" border="1" width="900" align="center">
+    <tr>
+        <th class="Th">
+            @Html.DisplayNameFor(model => model.PorchNumber)
+        </th>
+        <th class="Th">
+            @Html.DisplayNameFor(model => model.house.HouseNumber)
+        </th>
+        <th class="Th">
+            @Html.DisplayNameFor(model => model.house.street.Name)
+        </th>
+        <th class="Th">
+            @Html.DisplayNameFor(model => model.house.street.subRegion.Name)
+        </th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class ="Tr">
+            <td class="Td" align="center">
+                @Html.DisplayFor(modelItem => item.PorchNumber)
+            </td>
+            <td class="Td" align="center">
+                @Html.DisplayFor(modelItem => item.house.HouseNumber)
+            </td>
+            <td class="Td" align="center">
+                @Html.DisplayFor(modelItem => item.house.street.Name)
+            </td>
+            <td class="Td" align="center">
+                @Html.DisplayFor(modelItem => item.house.street.subRegion.Name)
+            </td>
+           
+            <td class="Td" align="center">
+                @Html.ActionLink("Подробнее", "Details", new { id = item.PorchId }, new { @class = "More" })       
+            </td>
+            <td class="Td" align="center">
+                @Html.ActionLink("Удалить", "Delete", new { id = item.PorchId }, new { @class = "Delete" })
+            </td>
+            <td class="Td" align="center">
+                @Html.ActionLink("Уведомить", "Send", new { id = item.PorchId }, new { @class = "Send" })
+            </td>
+        </tr>
+    }
+
+</table>
+<br /><hr />
+@Html.ActionLink("Обратно", "Index", "Add", new { @class = "Delete" })

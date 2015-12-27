@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "SendFail";
+}
+
+<div>
+    <table class="MyTable" align="center" width="800">
+        <tr class="Tr">
+            <td class="Td" align="center">@Html.ActionLink("Районы", "Index", "SubRegions")</td>
+            <td class="Td" align="center">@Html.ActionLink("Улицы", "Index", "Streets")</td>
+            <td class="Td" align="center">@Html.ActionLink("Дома", "Index", "Houses")</td>
+            <td class="Td" align="center">@Html.ActionLink("Подъезды", "Index", "Porches")</td>
+            <td class="Td" align="center">@Html.ActionLink("Квартиры", "Index", "Apartments")</td>
+        </tr>
+    </table>
+</div>
+
+<hr />
+<div>
+    <table class="MyTable" align="center" width="800">
+        <tr class="Tr">
+            <td class="Td" align="center">@Html.ActionLink("Добавить подрайон", "Create", null, new { @class = "Adding" })</td>
+            <td class="Td" align="center">@Html.ActionLink("Уведомить несколько", "SendSeveral", null, new { @class = "Send" })</td>
+        </tr>
+    </table>
+</div>
+
+
+<h1>Невозможно отправить сообщение</h1>
+<h2>В выбранном районе или районах нет квартир</h2>
+<br />
+@Html.ActionLink("Редактирование и уведомления", "Index", null, new { @class = "Send" })
+

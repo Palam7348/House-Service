@@ -1,0 +1,96 @@
+﻿@model IEnumerable<HouseServicesSigmaProject.Models.House>
+
+
+@{
+    ViewBag.Title = "Уведомления";
+}
+
+
+
+@using (Html.BeginForm())
+{
+
+
+
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        <h2>Отправка уведомлений нескольким домам</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <table align="center">
+            <tr>
+                <td>
+                    <input type="button" id="CheckAll" value="Выбрать все" />
+                </td>
+                <td>
+                    <input type="button" id="DisableAll" value="Снять все  " />
+                </td>
+            </tr>
+        </table>
+
+        <table class="MyTable" width="900" align="left">
+            <tr class="Tr">
+                <th class="Th">
+                    Номер дома
+                </th>
+                <th class="Th">
+                    Название улицы
+                </th>
+                <th class="Th">
+                    Название района
+                </th>
+                <th class="Th">
+                    Выберите нужные
+                </th>
+            </tr>
+
+            @foreach (var g in Model)
+            {
+
+                <tr class="Tr">
+                    <td class="Td">
+                        @g.HouseNumber
+                    </td>
+                    <td class="Td">
+                        @g.street.Name
+                    </td>
+                    <td class="Td">
+                        @g.street.subRegion.Name
+                    </td>
+                    <td class="Td">
+                        <input class="MyCheck" type="checkbox" name="HouseIdies" value="@g.HouseId" id="MyCheckBox" />
+                    </td>
+                </tr>
+
+
+
+            }
+
+        </table>
+
+
+
+        <br />
+
+        @Html.TextArea("textArea", "Введите сообщение: ", 5, 50, null)
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Обратно", "Index", "Houses", new { @class = "Delete" })
+</div>
+
+

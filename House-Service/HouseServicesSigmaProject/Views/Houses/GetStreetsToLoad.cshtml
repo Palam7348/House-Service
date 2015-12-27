@@ -1,0 +1,12 @@
+﻿@using HouseServicesSigmaProject.Models
+
+
+@{
+    List<Street> streets = ViewBag.streets;
+    for (int i = 0; i < streets.Count; i++)
+    {
+        <option value="@streets[i].StreetId">
+            @streets[i].Name
+        </option>
+    }
+}

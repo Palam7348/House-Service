@@ -1,0 +1,36 @@
+﻿@model HouseServicesSigmaProject.Models.Apartment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <h4>Квартира с номером @Model.ApartmentNumber</h4>
+    <hr />
+   
+
+    <table class="MyTable" cellpadding="10" border="1" width="900" align="center">
+        <tr class="Tr">
+            <th class="Th">Номер квартиры</th>
+            <th class="Th">Электронная почта</th>
+            <th class="Th">Номер подъезда</th>
+            <th class="Th">Номер дома</th>
+            <th class="Th">Название улицы</th>
+            <th class="Th">Название района</th>
+        </tr>
+        <tr class="Tr">
+            <td class="Td" align="center">@Model.ApartmentNumber</td>
+            <td class="Td" align="center">@Model.OwnerTelephoneNumber</td>
+            <td class="Td" align="center">@Model.porch.PorchNumber</td>
+            <td class="Td" align="center">@Model.porch.house.HouseNumber</td>
+            <td class="Td" align="center">@Model.porch.house.street.Name</td>
+            <td class="Td" align="center">@Model.porch.house.street.subRegion.Name</td>
+        </tr>
+    </table>
+   
+</div>
+<p>
+    @Html.ActionLink("Обратно", "Index")
+</p>

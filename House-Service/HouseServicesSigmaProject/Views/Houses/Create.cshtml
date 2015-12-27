@@ -1,0 +1,64 @@
+﻿
+@using HouseServicesSigmaProject.Models;
+@model HouseServicesSigmaProject.Models.House
+
+
+<input name="houses-to-load" id="houses-to-load" type="hidden" value="@Url.Action("GetHousesToLoad")" />
+<input name="street-to-load" id="street-to-load" type="hidden" value="@Url.Action("GetStreetsToLoad")" />
+<input name="porches-to-load" id="porches-to-load" type="hidden" value="@Url.Action("GetPorchesToLoad")" />
+@{
+    ViewBag.Title = "Create";
+}
+       
+
+
+<h2>Create</h2>
+
+@{
+    
+}
+<hr />
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    
+        <h4>House</h4>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.street.subRegion.Name, "Название района")
+    </div>
+        <div class="editor-field-region-in-house">
+            @Html.DropDownList("SubRegionId", String.Empty)
+            @*@Html.ValidationMessageFor(model => model.SubRegionId)*@
+        </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.street.Name, "Название улицы")
+    </div>
+        <div class="editor-field-street-in-house">
+            @Html.DropDownList("StreetId", String.Empty)
+            @*@Html.ValidationMessageFor(model => model.StreetId)*@
+        </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HouseNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HouseNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HouseNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+       
+}
+
+<div>
+    @Html.ActionLink("Обратно", "Index")
+</div>

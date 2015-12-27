@@ -1,0 +1,12 @@
+﻿@using HouseServicesSigmaProject.Models
+
+
+@{
+    List<Porch> porches = ViewBag.porches;
+    for (int i = 0; i < porches.Count; i++)
+    {
+        <option value="@porches[i].PorchId">
+            @porches[i].PorchNumber
+        </option>
+    }
+}

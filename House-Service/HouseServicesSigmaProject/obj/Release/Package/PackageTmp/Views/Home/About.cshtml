@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Помощь";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article>
+    <p>
+        По любым вопросам обращайтесь к разработчикам во вкладке "Контакты".
+    </p>
+
+  <!--<p>
+        Use this area to provide additional information.
+    </p>
+
+    <p>
+        Use this area to provide additional information.
+    </p>-->  
+</article>
+
+<aside>
+    <h3>Aside Title</h3>
+    <p>
+        Возможно Вам помогут следующие ссылки.
+    </p>
+    <ul>
+        <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
+        <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+        <li>@Html.ActionLink("Редактирование и уведомления", "Index", "Houses")</li>
+    </ul>
+</aside>

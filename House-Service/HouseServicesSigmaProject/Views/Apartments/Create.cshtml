@@ -1,0 +1,89 @@
+﻿@model HouseServicesSigmaProject.Models.Apartment
+
+@{
+    ViewBag.Title = "Добавить квартиру";
+}
+
+<h2>Create</h2>
+<input name="houses-to-load" id="houses-to-load" type="hidden" value="@Url.Action("GetHousesToLoad")" />
+<input name="street-to-load" id="street-to-load" type="hidden" value="@Url.Action("GetStreetsToLoad")" />
+<input name="porches-to-load" id="porches-to-load" type="hidden" value="@Url.Action("GetPorchesToLoad")" />
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Добавить квартиру</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.porch.house.street.subRegion.Name, "Название района")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SubRegionId", String.Empty)
+            @*@Html.ValidationMessageFor(model => model.SubRegionId)*@
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.porch.house.street.Name, "Название улицы")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("StreetId", String.Empty)
+                @*@Html.ValidationMessageFor(model => model.StreetId)*@
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.porch.house.HouseNumber, "Номер дома")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("HouseId", String.Empty)
+                @*@Html.ValidationMessageFor(model => model.HouseId)*@
+            </div>
+
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.porch.PorchNumber, "Номер подъезда")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("PorchId", String.Empty)
+                @Html.ValidationMessageFor(model => model.PorchId)
+            </div>
+
+            <hr />
+            <i>Информация о квартире</i>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ApartmentNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ApartmentNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ApartmentNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OwnerTelephoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OwnerTelephoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OwnerTelephoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+        <hr />
+        <div>
+            @Html.ActionLink("Обратно", "Index")
+        </div>

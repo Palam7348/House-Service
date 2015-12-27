@@ -1,0 +1,39 @@
+﻿@model HouseServicesSigmaProject.Models.Apartment
+
+@{
+    ViewBag.Title = "Уведомления";
+}
+
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ApartmentId)
+
+        
+
+      <h2>Вы выбрали квартиру с номером - @Model.ApartmentNumber</h2>
+
+        @Html.TextArea("textArea", "Введите сообщение: ", 5, 50, null)
+
+        <input name="ApartmentId" id="ApartmentId" type="hidden" value="@Model.ApartmentId" />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Обратно", "Index", new { @class = "Delete" })
+</div>

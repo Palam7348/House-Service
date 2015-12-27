@@ -1,0 +1,38 @@
+﻿@model HouseServicesSigmaProject.Models.Street
+@{
+    ViewBag.Title = "Уведомления";
+}
+
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.StreetId)
+
+
+
+        <h2>Вы выбрали улицу с названием - @Model.Name</h2>
+
+        @Html.TextArea("textArea", "Введите сообщение: ", 5, 50, null)
+
+        <input name="StreetId" id="StreetId" type="hidden" value="@Model.StreetId" />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Обратно", "Index")
+</div>

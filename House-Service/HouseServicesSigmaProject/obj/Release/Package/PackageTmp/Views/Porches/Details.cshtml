@@ -1,0 +1,32 @@
+﻿@model HouseServicesSigmaProject.Models.Porch
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h4>Подъезд с номером @Model.PorchNumber</h4>
+    <hr />
+
+
+    <table class="MyTable" cellpadding="10" border="1" width="900" align="center">
+        <tr class="Tr">
+            <th class="Th">Номер подъезда</th>
+            <th class="Th">Номер дома</th>
+            <th class="Th">Название улицы</th>
+            <th class="Th">Название района</th>
+        </tr>
+        <tr class="Tr">
+
+            <td class="Td" align="center">@Model.PorchNumber</td>
+            <td class="Td" align="center">@Model.house.HouseNumber</td>
+            <td class="Td" align="center">@Model.house.street.Name</td>
+            <td class="Td" align="center">@Model.house.street.subRegion.Name</td>
+        </tr>
+    </table>
+    <h2>Количество квартир в подъезде - @ViewBag.count</h2>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to List", "Index")
+</p>

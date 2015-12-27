@@ -1,0 +1,102 @@
+﻿@model IEnumerable<HouseServicesSigmaProject.Models.Porch>
+
+
+@{
+    ViewBag.Title = "Уведомления";
+}
+
+
+
+@using (Html.BeginForm())
+{
+
+
+
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        <h2>Отправка уведомлений нескольким подъездам</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <table align="center">
+            <tr>
+                <td>
+                    <input type="button" id="CheckAll" value="Выбрать все" />
+                </td>
+                <td>
+                    <input type="button" id="DisableAll" value="Снять все  " />
+                </td>
+            </tr>
+        </table>
+
+        <table class="MyTable" width="900" align="left">
+            <tr class="Tr">
+                <th class="Th">
+                    Номер подъезда
+                </th>
+                <th class="Th">
+                    Номер дома
+                </th>
+                <th class="Th">
+                    Название улицы
+                </th>
+                <th class="Th">
+                    Название района
+                </th>
+                <th class="Th">
+                    Выберите нужные
+                </th>
+            </tr>
+
+            @foreach (var g in Model)
+            {
+
+                <tr class="Tr">
+                    <td class="Td">
+                        @g.PorchNumber
+                    </td>
+                    <td class="Td">
+                        @g.house.HouseNumber
+                    </td>
+                    <td class="Td">
+                        @g.house.street.Name
+                    </td>
+                    <td class="Td">
+                        @g.house.street.subRegion.Name
+                    </td>
+                    <td class="Td">
+                        <input class="MyCheck" type="checkbox" name="PorchIdies" value="@g.PorchId" id="MyCheckBox" />
+                    </td>
+                </tr>
+
+
+
+            }
+
+        </table>
+
+
+
+        <br />
+
+        @Html.TextArea("textArea", "Введите сообщение: ", 5, 50, null)
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Обратно", "Index", "Porches", new { @class = "Delete" })
+</div>
+
+

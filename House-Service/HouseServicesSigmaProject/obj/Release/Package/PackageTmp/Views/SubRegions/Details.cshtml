@@ -1,0 +1,30 @@
+﻿@model HouseServicesSigmaProject.Models.SubRegion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Район с названием @Model.Name</h4>
+    <hr />
+
+
+    <table class="MyTable" cellpadding="10" border="1" width="900" align="center">
+        <tr class="Tr">
+
+           
+            <th class="Th">Название района</th>
+        </tr>
+        <tr class="Tr">
+
+
+            <td class="Td" align="center">@Model.Name</td>
+        </tr>
+    </table>
+    <h2>Количество квартир в районе - @ViewBag.count</h2>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

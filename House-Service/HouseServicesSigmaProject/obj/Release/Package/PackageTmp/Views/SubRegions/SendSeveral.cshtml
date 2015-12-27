@@ -1,0 +1,84 @@
+﻿@model IEnumerable<HouseServicesSigmaProject.Models.SubRegion>
+
+
+@{
+    ViewBag.Title = "Уведомления";
+}
+
+
+
+@using (Html.BeginForm())
+{
+
+
+
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        <h2>Отправка уведомлений нескольким подрайонам</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <table align="center">
+            <tr>
+                <td>
+                    <input type="button" id="CheckAll" value="Выбрать все" />
+                </td>
+                <td>
+                    <input type="button" id="DisableAll" value="Снять все  " />
+                </td>
+            </tr>
+        </table>
+
+        <table class="MyTable" width="900" align="left">
+            <tr class="Tr">
+                <th class="Th">
+                    Название района
+                </th>
+                <th class="Th">
+                    Выберите нужные
+                </th>
+            </tr>
+
+            @foreach (var g in Model)
+            {
+
+                <tr class="Tr">
+                    <td class="Td">
+                        @g.Name
+                    </td>
+                    <td class="Td">
+                        <input class="MyCheck" type="checkbox" name="SubRegionIdies" value="@g.SubRegionId" id="MyCheckBox" />
+                    </td>
+                </tr>
+
+
+
+            }
+
+        </table>
+
+
+
+        <br />
+
+        @Html.TextArea("textArea", "Введите сообщение: ", 5, 50, null)
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Обратно", "Index", "SubRegions", new { @class = "Delete" })
+</div>
+
+

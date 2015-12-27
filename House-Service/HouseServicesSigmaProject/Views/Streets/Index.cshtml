@@ -1,0 +1,68 @@
+﻿@model IEnumerable<HouseServicesSigmaProject.Models.Street>
+
+@{
+    ViewBag.Title = "Streets";
+}
+
+
+<div>
+    <table class="MyTable" align="center" width="800">
+        <tr class="Tr">
+            <td class="Td" align="center">@Html.ActionLink("Районы", "Index", "SubRegions")</td>
+            <td class="Td" align="center">@Html.ActionLink("Улицы", "Index", "Streets")</td>
+            <td class="Td" align="center">@Html.ActionLink("Дома", "Index", "Houses")</td>
+            <td class="Td" align="center">@Html.ActionLink("Подъезды", "Index", "Porches")</td>
+            <td class="Td" align="center">@Html.ActionLink("Квартиры", "Index", "Apartments")</td>
+        </tr>
+    </table>
+</div>
+
+<hr />
+
+<div>
+    <table class="MyTable" align="center" width="800">
+        <tr class="Tr">
+            <td class="Td" align="center">@Html.ActionLink("Добавить улицу", "Create", null, new { @class = "Adding" })</td>
+            <td class="Td" align="center">@Html.ActionLink("Уведомить несколько", "SendSeveral", null, new { @class = "Send" })</td>
+        </tr>
+    </table>
+</div>
+
+
+<table class="MyTable" cellpadding="10" border="1" width="900" align="center">
+    <tr>
+        <th class="Th">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th class="Th">
+            @Html.DisplayNameFor(model => model.subRegion.Name)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="Tr">
+            <td class="Td" align="center">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="Td" align="center">
+                @Html.DisplayFor(modelItem => item.subRegion.Name)
+            </td>
+            
+            <td class="Td" align="center">
+                @Html.ActionLink("Подробнее", "Details", new { id = item.StreetId }, new { @class = "More" })
+
+            </td>
+            <td class="Td" align="center">
+                @Html.ActionLink("Удалить", "Delete", new { id = item.StreetId }, new { @class = "Delete" })
+            </td>
+            <td class="Td" align="center">
+                @Html.ActionLink("Уведомить", "Send", new { id = item.StreetId }, new { @class = "Send" })
+            </td>
+        </tr>
+    }
+
+</table>
+<br /><hr />
+@Html.ActionLink("Обратно", "Index", "Add", new { @class = "Delete" })
